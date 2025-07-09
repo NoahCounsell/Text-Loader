@@ -1,0 +1,46 @@
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="h-screen w-full flex justify-center items-center">
+    <div class="font-mono text-xl" id="counter">HELLO WORLD</div><span id="finalValues" class="font-mono text-xl"></span>
+</div>
+
+<script>
+
+const counter = document.getElementById('counter');
+
+const finalValues = document.getElementById('finalValues');
+
+var finalText = counter.textContent;
+
+const allChricters = '!@#$%^&*()_+-=[]{}|;:,.<>?/0123456789';
+
+const counterValues = counter.textContent.split('');
+
+setInterval(() => {
+    for(let i = 0; i < 100; i++){
+        counter.textContent = '';
+        counterValues.forEach((charicter) => {
+            var intermediatValue = []
+            let randomNumber = Math.floor(Math.random() * allChricters.length)
+            intermediatValue.push(allChricters[randomNumber])
+            counter.textContent += intermediatValue.join('');
+        })
+
+        if(i % 100 === 0 && finalText.length > 0){
+            let charicters = finalText.split('');
+            finalValues.textContent += charicters[0];
+            finalText = finalText.slice(1);
+            counterValues.pop();
+        }
+
+        if(finalText.length === 0){
+            break;
+        }
+
+        console.log(finalText);
+    }
+}, 90);
+
+</script>
+
